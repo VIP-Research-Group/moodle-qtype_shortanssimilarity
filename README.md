@@ -8,7 +8,7 @@ The plugin extracts the text from the answer provided by teacher and from the st
 
 ### Installation Using Git 
 
-To install using git for the latest version (the master branch), type this command in the
+To install using git for the latest version (the main branch), type this command in the
 root of your Moodle install:
 
     git clone https://github.com/VIP-Research-Group/moodle-qtype_shortanssimilarity.git question/type/shortanssimilarity
