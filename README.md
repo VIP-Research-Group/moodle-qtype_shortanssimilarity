@@ -11,11 +11,11 @@ The plugin extracts the text from the answer provided by teacher and from the st
 To install using git for the latest version (the master branch), type this command in the
 root of your Moodle install:
 
-    git clone https://github.com/ysrivast2000/moodle-qtype_shortanssimilarity.git question/type/shortanssimilarity
+    git clone https://github.com/VIP-Research-Group/moodle-qtype_shortanssimilarity.git question/type/shortanssimilarity
 
 ### Installation From Downloaded zip file
 
-Alternatively, download the zip (can be found at the follwing link after you click the green code button): https://github.com/ysrivast2000/moodle-qtype_shortanssimilarity
+Alternatively, download the zip (can be found at the follwing link after you click the green code button): https://github.com/VIP-Research-Group/moodle-qtype_shortanssimilarity
 
 unzip it into the question/type folder, and then rename the new folder to shortanssimilairty.
 
