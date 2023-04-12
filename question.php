@@ -222,10 +222,10 @@ class qtype_shortanssimilarity_question extends question_with_responses implemen
 
             if ($question->manual_grading == 1) {
                 if (!$attempt->queued) {
-                    $this->calculate_simularity($question, $response, $USER->id, false);
+                    $this->calculate_similarity($question, $response, $USER->id, false);
 
                 } else if ($attempt->response != hash('md5', $response['answer'])) {
-                    $this->calculate_simularity($question, $response, $USER->id, true);
+                    $this->calculate_similarity($question, $response, $USER->id, true);
                 }
             }
 
@@ -348,7 +348,7 @@ class qtype_shortanssimilarity_question extends question_with_responses implemen
      * @param int $userid - The student's ID.
      * @param boolean $redo - The question may have been answered, but not submitted.
      */
-    public function calculate_simularity($question, $response, $userid, $redo) {
+    public function calculate_similarity($question, $response, $userid, $redo) {
         global $DB, $COURSE;
 
         $task = new qtype_shortanssimilarity\calculator();
@@ -357,6 +357,9 @@ class qtype_shortanssimilarity_question extends question_with_responses implemen
             'target' => $response['answer'],
             'userid' => $userid,
             'language' => $question->item_language,
+            'method' => $question->maxbpm,
+            'ngrampos' => $question->ngrampos,
+            'canonical' => $question->canonical,
             'id' => $question->id,
         ));
         \core\task\manager::queue_adhoc_task($task);
@@ -426,7 +429,16 @@ class qtype_shortanssimilarity_question extends question_with_responses implemen
         $attempt->response = hash('md5', $response['answer']);
         $DB->update_record('qtype_shortanssim_attempt', $attempt);
 
-        $contents = qtype_shortanssimilarity_call_bridge($question->key_text, $response['answer'], $question->item_language);
+        $data = [
+            'key' => $question->key_text,
+            'target' => $response['answer'],
+            'language' => $question->item_language,
+            'method' => $question->maxbpm,
+            'ngrampos' => $question->ngrampos,
+            'canonical' => $question->canonical
+        ];
+
+        $contents = qtype_shortanssimilarity_call_bridge($data);
 
         $attempt->result = $contents->similarity;
         $attempt->finished = 1;

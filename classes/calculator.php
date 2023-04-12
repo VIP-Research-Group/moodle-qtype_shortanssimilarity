@@ -53,7 +53,7 @@ class calculator extends \core\task\adhoc_task {
 
         $data = $this->get_custom_data();
 
-        $contents = qtype_shortanssimilarity_call_bridge($data->key, $data->target, $data->language);
+        $contents = qtype_shortanssimilarity_call_bridge($data);
 
         $params = [
             'questionid' => $data->id,

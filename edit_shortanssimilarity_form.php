@@ -59,10 +59,16 @@ class qtype_shortanssimilarity_edit_form extends question_edit_form {
         $id = optional_param('id', 0, PARAM_INT);
         $oldkey = '';
         $oldlang = 'en';
+        $maxbpm = 0;
+        $ngrampos = 0;
+        $canonical = 0;
         if ($id) {
             $record = $DB->get_record('qtype_shortanssimilarity', ['questionid' => $id]);
             $oldkey = $record->key_text;
             $oldlang = $record->item_language;
+            $maxbpm = $record->maxbpm;
+            $ngrampos = $record->ngrampos;
+            $canonical = $record->canonical;
         }
 
         // Add fields specific to this question type.
@@ -77,6 +83,20 @@ class qtype_shortanssimilarity_edit_form extends question_edit_form {
         $mform->addElement('select', 'language', get_string('language', 'qtype_shortanssimilarity'), (array) $languages);
         $mform->setType('language', PARAM_NOTAGS);
         $mform->setDefault('language', $oldlang);
+
+        $options = array('yes' => get_string('yes'), 'no' => get_string('no'));
+
+        // Yes/No select option for max BPM.
+        $mform->addElement('select', 'maxbpm', get_string('maxbpm', 'qtype_shortanssimilarity'), $options);
+        $mform->getElement('maxbpm')->setSelected($maxbpm);
+
+        // Yes/No select option for Ngram-POS.
+        $mform->addElement('select', 'ngrampos', get_string('ngrampos', 'qtype_shortanssimilarity'), $options);
+        $mform->getElement('ngrampos')->setSelected($ngrampos);
+
+        // Yes/No select option for canonical.
+        $mform->addElement('select', 'canonical', get_string('canonical', 'qtype_shortanssimilarity'), $options);
+        $mform->getElement('canonical')->setSelected($canonical);
 
         $text = get_string('manualmarking', 'qtype_shortanssimilarity');
         $mform->addElement('select', 'manual_grading', $text, array(true => 'yes', false => 'no'));

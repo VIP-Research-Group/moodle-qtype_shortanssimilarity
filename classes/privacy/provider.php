@@ -61,12 +61,15 @@ class provider implements
         $collection->add_database_table(
             'qtype_shortanssimilarity',
             [
-                'questionid'     => 'privacy:metadata:qtype_shortanssimilarity:questionid',
-                'key_text'       => 'privacy:metadata:qtype_shortanssimilarity:key_text',
-                'item_language'  => 'privacy:metadata:qtype_shortanssimilarity:item_language',
-                'result'         => 'privacy:metadata:qtype_shortanssimilarity:result',
-                'finished'       => 'privacy:metadata:qtype_shortanssimilarity:finished',
+                'questionid' => 'privacy:metadata:qtype_shortanssimilarity:questionid',
+                'key_text' => 'privacy:metadata:qtype_shortanssimilarity:key_text',
+                'item_language' => 'privacy:metadata:qtype_shortanssimilarity:item_language',
+                'result' => 'privacy:metadata:qtype_shortanssimilarity:result',
+                'finished' => 'privacy:metadata:qtype_shortanssimilarity:finished',
                 'manual_grading' => 'privacy:metadata:qtype_shortanssimilarity:manual_grading',
+                'maxbpm' => 'privacy:metadata:qtype_shortanssimilarity:maxbpm',
+                'ngrampos' => 'privacy:metadata:qtype_shortanssimilarity:ngrampos',
+                'canonical' => 'privacy:metadata:qtype_shortanssimilarity:canonical',
             ],
             'privacy:metadata:shortanssimilarity'
         );
@@ -75,11 +78,11 @@ class provider implements
             'qtype_shortanssim_attempt',
             [
                 'questionid' => 'privacy:metadata:qtype_shortanssimilarity:questionid',
-                'userid'     => 'privacy:metadata:qtype_shortanssimilarity:userid',
-                'result'     => 'privacy:metadata:qtype_shortanssimilarity:result',
-                'queued'     => 'privacy:metadata:qtype_shortanssimilarity:queued',
-                'finished'   => 'privacy:metadata:qtype_shortanssimilarity:finished',
-                'response'   => 'privacy:metadata:qtype_shortanssimilarity:response',
+                'userid' => 'privacy:metadata:qtype_shortanssimilarity:userid',
+                'result' => 'privacy:metadata:qtype_shortanssimilarity:result',
+                'queued' => 'privacy:metadata:qtype_shortanssimilarity:queued',
+                'finished' => 'privacy:metadata:qtype_shortanssimilarity:finished',
+                'response' => 'privacy:metadata:qtype_shortanssimilarity:response',
             ],
             'privacy:metadata:shortanssim_attempt'
         );
@@ -106,7 +109,7 @@ class provider implements
 
         $params = [
             'context' => CONTEXT_MODULE,
-            'userid'  => $userid
+            'userid' => $userid
         ];
 
         $contextlist->add_from_sql($sql, $params);

@@ -41,7 +41,7 @@ $string['manual_marking'] = 'maunal marking vs automatic marking';
 $string['manual_marking_help'] = '- Maunal Marking: Requires cron. If set to yes, this question will default to maunal marking and the question will be marked in the background. Once the question is finished marking, the question text will be updated with the result (This will be visible to both teachers and students but will not actually mark the question). From there the teacher can review the question and update the mark. Use IF the provided answer (Key Text) is longer than 2 sentences.
 
 - Automatic Marking: Does not require cron. If this option is set to no, then will use automatic marking. Although, load times will be drastically longer (can last 10 minutes per question, if responses are compilcated). Therefore we recommend this option be set to no, IF the answer (Key Text) is less then or equal to 2 sentences.';
-$string['keytext']  = 'Key Text';
+$string['keytext'] = 'Key Text';
 $string['language'] = 'Language';
 $string['manualmarking'] = 'Manual Marking?';
 $string['summarize_repsponse_valid'] = 'The user entered: ';
@@ -53,6 +53,9 @@ $string['validation_error_error'] = 'There was an unexpected error';
 $string['is_completed_true'] = 'The calculated mark for this response was: {$a}.';
 $string['is_completed_false'] = 'This question has not been marked yet by our systems - please check back later.';
 $string['update_mark'] = 'If the mark has not been updated, the teacher needs to update it.';
+$string['maxbpm'] = 'Use maximum bi-partite matching?';
+$string['ngrampos'] = 'Use N-gram/POS service?';
+$string['canonical'] = 'Use canonical method?';
 $string['privacy:metadata:shortanssimilarity:'] = 'Table used for storing question related data.';
 $string['privacy:metadata:qtype_shortanssimilarity:questionid'] = 'The ID of the question.';
 $string['privacy:metadata:qtype_shortanssimilarity:key_text'] = 'The teacher\'s answer to the question.';
@@ -64,5 +67,8 @@ $string['privacy:metadata:qtype_shortanssimilarity:shortanssim_attempt'] = 'Tabl
 $string['privacy:metadata:qtype_shortanssimilarity:userid'] = 'The student ID value.';
 $string['privacy:metadata:qtype_shortanssimilarity:queued'] = 'Whether or not this question has been queued for marking.';
 $string['privacy:metadata:qtype_shortanssimilarity:response'] = 'The MD5 sum hashed student response.';
+$string['privacy:metadata:qtype_shortanssimilarity:maxbpm'] = 'Flag to use maximum bi-partite matching or not.';
+$string['privacy:metadata:qtype_shortanssimilarity:ngrampos'] = 'Flag to use the N-gram/POS service or not.';
+$string['privacy:metadata:qtype_shortanssimilarity:canonical'] = 'Flag to use the canonical method or not.';
 $string['privacy:metadata:ws_nlp_web_service'] = 'The VIP Research Group Word and Sentence Natural Language Processing Web service, which is used to calculate the similarity between 2 sentences or paragraphs.';
 $string['privacy:metadata:ws_nlp_web_service:answer'] = 'The student\'s answer to the question, which is compared with the teacher\'s answer.';

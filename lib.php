@@ -51,18 +51,21 @@ function qtype_shortanssimilarity_pluginfile($course, $cm, $context, $filearea, 
  * @param string $language - The language setting for this question.
  * @return object
  */
-function qtype_shortanssimilarity_call_bridge($answer, $response, $language) {
+function qtype_shortanssimilarity_call_bridge($data) {
     global $CFG;
 
     require_once($CFG->libdir . '/filelib.php');
     // Prepare object to be sent to VIP Research's multi-sentence
     // short answer similarity.
+    $data = json_decode(json_encode($data), true); // Make sure is array.
     $json = array(
-        'key' => $answer,
-        'target' => $response,
+        'key' => $data['key'],
+        'target' => $data['target'],
         'value' => 1,
-        'method' => 'old',
-        'language' => $language,
+        'method' => $data['method'] ? 'bpm' : 'old',
+        'language' => $data['language'],
+        'ngrampos' => $data['ngrampos'] ? 'ngrampos' : '',
+        'canonical' => $data['canonical'] ? 'canonical' : '',
         'email' => 'sas@vipresearch.ca'
     );
 

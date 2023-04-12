@@ -100,5 +100,38 @@ function xmldb_qtype_shortanssimilarity_upgrade($oldversion = 0) {
         upgrade_plugin_savepoint(true, 2022070600, 'qtype', 'shortanssimilarity');
     }
 
+    if ($oldversion < 2023041100) {
+
+        // Define field ngrampos to be added to qtype_shortanssimilarity.
+        $table = new xmldb_table('qtype_shortanssimilarity');
+        $field = new xmldb_field('ngrampos', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, '0', 'manual_grading');
+
+        // Conditionally launch add field ngrampos.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // Define field maxbpm to be added to qtype_shortanssimilarity.
+        $table = new xmldb_table('qtype_shortanssimilarity');
+        $field = new xmldb_field('maxbpm', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, '0', 'ngrampos');
+
+        // Conditionally launch add field maxbpm.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // Define field canonical to be added to qtype_shortanssimilarity.
+        $table = new xmldb_table('qtype_shortanssimilarity');
+        $field = new xmldb_field('canonical', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, '0', 'maxbpm');
+
+        // Conditionally launch add field canonical.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // Shortanssimilarity savepoint reached.
+        upgrade_plugin_savepoint(true, 2023041100, 'qtype', 'shortanssimilarity');
+    }
+
     return true;
 }

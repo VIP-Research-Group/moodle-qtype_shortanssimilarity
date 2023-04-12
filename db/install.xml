@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="question/type/shortanssimilarity/db" VERSION="20220704" COMMENT="XMLDB file for Moodle question/type/shortanssimilarity"
+<XMLDB PATH="question/type/shortanssimilarity/db" VERSION="20230411" COMMENT="XMLDB file for Moodle question/type/shortanssimilarity"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../../lib/xmldb/xmldb.xsd"
 >
@@ -13,6 +13,9 @@
         <FIELD NAME="result" TYPE="number" LENGTH="15" NOTNULL="false" DEFAULT="0" SEQUENCE="false" DECIMALS="14" COMMENT="The simiarity score of this item"/>
         <FIELD NAME="finished" TYPE="int" LENGTH="2" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="If the question has finished marking"/>
         <FIELD NAME="manual_grading" TYPE="int" LENGTH="2" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="If the question should be marked with cron and require a manual review"/>
+        <FIELD NAME="ngrampos" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="maxbpm" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="canonical" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
