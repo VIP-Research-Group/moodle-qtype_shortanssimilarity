@@ -43,6 +43,9 @@ class qtype_shortanssimilarity_renderer extends qtype_renderer {
 
         $question = $qa->get_question();
         $responseoutput = $question->get_format_renderer($this->page);
+        if (method_exists($responseoutput, 'set_displayoptions')) {
+            $responseoutput->set_displayoptions($options); // Moodle 4.x and later
+        }
 
         $step = $qa->get_last_step_with_qt_var('answer');
 
